@@ -8,7 +8,7 @@ function transform(){
         const data = new FormData();
         data.append('imagem', imagem.files[0]);
         //data.append('user', 'hubot')
-        fetch('http://localhost:3000/', {
+        fetch('https://southamerica-east1-psyched-runner-391402.cloudfunctions.net/blackAndWhiteGo', {
             method: 'POST', 
             body: data
             }).then(res => {
