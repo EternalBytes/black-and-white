@@ -1,84 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Pattaya&display=swap');
 *, *::after, *::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container {
-    background-color: gainsboro;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-}
-
-.container-in {
-    border: 1px solid rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    background-color: #99999971;
-    width: fit-content;
-    height: 298px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 30px;
+body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    font-family: sans-serif;
 }
 
-.container-in h1 {
-    font-size: 20px;
+@media screen and (max-width: 700px) {
+    .container {
+        background-image: url("./gril-color.webp");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center;
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: switch 4s linear infinite alternate;
+        filter: blur(0px);
+        transition: filter .1s ease-in-out;
+    }
+    
+    .container-in {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        background-color: rgba(200, 200, 200, 0.6);
+        backdrop-filter: blur(5px);
+        width: 355px;
+        height: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    
+    .container-in h1 {
+        font-size: 1.7rem;
+        font-family: 'Pattaya', sans-serif;
+        color: white;
+        border-radius: 18px;
+        background-color: rgba(137, 43, 226, 0.3);
+        padding: 0 5px 0 5px;
+    }
+    
+    #imagem {
+        background-color: transparent;
+        border-radius: 5px;
+        -webkit-user-select: none;
+        user-select: none;
+        width: 93px;
+        height: 68px;
+    }
+    
+    #imagem::-webkit-file-upload-button {
+        visibility: hidden;
+    }
+    
+    #imagem::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-image: url("./upload.webp");
+        background-size: 93px 68px;
+    }
+    
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #btn img{
+        vertical-align: bottom;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        width: 50px;
+        height: 50px;
+    }
+    #btn {
+        cursor: pointer;
+    }
+    
+    #btn:active {
+        transform: scale(1.09);
+    }
+    
+    #link {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: whitesmoke;
+        font-weight: 700;
+        font-family: sans-serif;
+        font-size: 1.3rem;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+    
+    #modal {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 350px;
+        height: fit-content;
+        background-color: white;
+        text-align: center;
+        border-radius: 20px;
+        padding: 10px;
+        overflow: hidden;
+    } 
+    
+    #modal h2 {
+        margin: 20px 0 30px 0;
+    }
+    
+    #modal button {
+        align-self: flex-end;
+        cursor: pointer;
+        border: none;
+        background-color: rgb(230, 116, 116);
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        z-index: 55;
+    }
+    
+    #container-modal {
+        position: absolute;
+        display: none;
+        z-index: 50;
+    }
+    
+    .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .loading img {
+        width: 50px;
+        height: 50px;
+        animation: rotate .8s linear infinite;
+    }
+    
+    #loading-con {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 }
 
-#imagem {
-    background-color: #f9f9f9e1;
-    border-radius: 3px;
+@media screen and (min-width: 700px) {
+    .container {
+        background-image: url("./gril-color.webp");
+        background-repeat: no-repeat;
+        background-size: 700px 100%;
+        background-position: center;
+        height: 100vh;
+        width: 700px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 10px solid green;
+        border-right: 10px solid blue;
+        animation: switch 4s linear infinite alternate;
+        filter: blur(0px);
+        transition: filter .1s ease-in-out;
+    }
+    
+    .container-in {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        background-color: rgba(200, 200, 200, 0.6);
+        backdrop-filter: blur(5px);
+        width: fit-content;
+        height: 298px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    
+    .container-in h1 {
+        font-size: 30px;
+        font-family: 'Pattaya', sans-serif;
+        color: white;
+        border-radius: 18px;
+        background-color: rgba(137, 43, 226, 0.3);
+        padding: 0 5px 0 5px;
+    }
+    
+    #imagem {
+        background-color: rgba(137, 43, 226, 0.2);
+        border-radius: 5px;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    #imagem::-webkit-file-upload-button {
+        background-color: blueviolet;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 16px;
+        outline: none;
+        -webkit-user-select: none;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: whitesmoke;
+    }
+    
+    .form {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #btn img{
+        vertical-align: bottom;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        width: 50px;
+        height: 50px;
+        transform: rotate(45deg);
+        transition: transform .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+    #btn {
+        cursor: pointer;
+        transition: transform .500ms ease;
+    }
+
+    #btn:hover img {
+        transform: rotate(0deg);
+    }
+    #btn:active {
+        transform: scale(1.09);
+    }
+    
+    #link {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: whitesmoke;
+        font-weight: 700;
+        font-family: sans-serif;
+        font-size: 1.3rem;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    #modal {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 350px;
+        height: fit-content;
+        background-color: white;
+        text-align: center;
+        border-radius: 20px;
+        padding: 10px;
+        overflow: hidden;
+    } 
+
+    #modal h2 {
+        margin: 20px 0 30px 0;
+    }
+
+    #modal button {
+        align-self: flex-end;
+        cursor: pointer;
+        border: none;
+        background-color: rgb(230, 116, 116);
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        z-index: 55
+    }
+
+    #container-modal {
+        position: absolute;
+        display: none;
+        z-index: 50;
+    }
+
+    .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .loading img {
+        width: 50px;
+        height: 50px;
+        animation: rotate .8s linear infinite;
+    }
+
+    #loading-con {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 }
 
-#imagem::-webkit-file-upload-button {
-    background: linear-gradient(top, #f9f9f9, #e3e3e3);
-    border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    -webkit-user-select: none;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.form {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-}
-
-#btn {
-    background: linear-gradient(top, #f9f9f9, #e3e3e3);
-    border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
-}
-
-#link {
-    padding: 6px 10px;
-    background-color: rgb(0, 136, 0);
-    color: white;
-    font-weight: 500;
-    font-size: 1.2rem;
-    border-radius: 4px;
-    cursor: pointer;
-    display: none;
-    text-decoration: none;
+@keyframes switch {
+    0% {background-image: url("./gril-color.webp")}
+    20% {background-image: url("./gril-color.webp")}
+    40% {background-image: url("./gril-color.webp")}
+    60% {background-image: url("./girl-bw.webp")}
+    80% {background-image: url("./girl-bw.webp")}
+    100% {background-image: url("./girl-bw.webp")}
 }

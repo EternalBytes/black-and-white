@@ -2,13 +2,18 @@ const imagem = document.getElementById("imagem");
 const btn    = document.getElementById("btn");
 const img    = document.getElementById("img");
 const link    = document.getElementById("link");
+const modal    = document.getElementById("modal");
+const container = document.querySelector(".container");
+const closeBtn = document.getElementById("close");
+const conatinerModal    = document.getElementById("container-modal");
+const loadingCon    = document.getElementById("loading-con");
 
-function transform(){
+async function transform(){
     if(imagem.files[0].type === "image/jpeg" || imagem.files[0].type === "image/jpg"){
         const data = new FormData();
         data.append('imagem', imagem.files[0]);
         //data.append('user', 'hubot')
-        fetch('https://southamerica-east1-psyched-runner-391402.cloudfunctions.net/blackAndWhiteGo', {
+        await fetch('http://localhost:3000', {
             method: 'POST', 
             body: data
             }).then(res => {
@@ -35,35 +40,60 @@ function transform(){
                 if(response.status === 200){
                     return response.blob();
                 } else {
-                    link.href = "";
-                    link.innerText = "Servidor indisponível...";
-                    link.style.backgroundColor = "#D0342C";
-                    link.style.display = "block";
+                    loadingCon.style.display = "none";
+                    container.style.filter = "blur(15px)";
+                    link.style.display = "none";
+                    modal.childNodes[3].innerHTML = "Server Temporarily Unavailable!"
+                    loadingCon.style.display = "none";
+                    conatinerModal.style.display = "block";
                 }
             }).then(blob => {
                 return URL.createObjectURL(blob);
             }).then(url => {
                 link.href = url;
-                link.download = "yourImage.jpeg"
-                link.innerText = "Baixe sua imagem";
+                link.download = "black-and-white" + imagem.files[0].name;
                 link.style.display = "block";
-                link.style.backgroundColor = "green";
-                }).catch(e => console.log(e))
+                link.style.background = "linear-gradient(rgb(67, 162, 67), green, rgb(67, 162, 67))";
+                modal.childNodes[3].innerHTML = "Your image is ready!"
+                link.textContent = "Download";
+                loadingCon.style.display = "none";
+                conatinerModal.style.display = "block";
+                }).catch(e => {
+                    console.log(e);
+                    loadingCon.style.display = "none";
+                    container.style.filter = "blur(15px)";
+                    link.style.display = "none";
+                    modal.childNodes[3].innerHTML = "You should be offline!"
+                    link.innerText = "Error..."
+                    conatinerModal.style.display = "block";
+                });
     } else {
-        link.style.backgroundColor = "#D0342C";
+        loadingCon.style.display = "none";
+        container.style.filter = "blur(15px)";
+        link.style.background = "#D0342C";
         link.style.display = "block";
-        link.innerText = "O arquivo deve ser .jpg ou .jpeg"
+        modal.childNodes[3].innerHTML = "File must be .jpg or .jpeg!"
+        link.innerText = "Error..."
+        conatinerModal.style.display = "block";
     }
 }
 
-btn.addEventListener("click", ()=> {
+btn.addEventListener("click", async ()=> {
     if(imagem.value) {
-        transform();
+        container.style.filter = "blur(15px)";
+        loadingCon.style.display = "block";
+        conatinerModal.style.display = "block";
+       await transform();
     } else {
-        link.style.display = "block";
-        link.style.backgroundColor = "gray";
-        link.style.border = "1px solid red";
-        link
-        link.innerHTML = "Escolha um arquivo, jpeg ou jpg..."
+        loadingCon.style.display = "none";
+        container.style.filter = "blur(15px)";
+        link.style.display = "none";
+        modal.childNodes[3].innerHTML = "Choose a jpeg image!!"
+        conatinerModal.style.display = "block";
     }
 }, false);
+
+closeBtn.addEventListener("click", function(){
+    container.style.filter = "blur(0px)";
+    conatinerModal.style.display = "none";
+}, false)
