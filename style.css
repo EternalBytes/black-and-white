@@ -24,7 +24,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        animation: switch 4s linear infinite alternate;
+        animation: switch 5s linear infinite alternate;
         filter: blur(0px);
         transition: filter .1s ease-in-out;
     }
@@ -188,7 +188,7 @@ body {
         align-items: center;
         border-left: 10px solid green;
         border-right: 10px solid blue;
-        animation: switch 4s linear infinite alternate;
+        animation: switch 5s linear infinite alternate;
         filter: blur(0px);
         transition: filter .1s ease-in-out;
     }
@@ -352,9 +352,5 @@ body {
 
 @keyframes switch {
     0% {background-image: url("./gril-color.webp")}
-    20% {background-image: url("./gril-color.webp")}
-    40% {background-image: url("./gril-color.webp")}
-    60% {background-image: url("./girl-bw.webp")}
-    80% {background-image: url("./girl-bw.webp")}
     100% {background-image: url("./girl-bw.webp")}
 }
