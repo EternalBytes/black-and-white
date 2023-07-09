@@ -1,3 +1,9 @@
+/*
+ * Author: Maycon P.
+ * GitHub: https://github.com/MayconParanhos
+ * GitHub Pages: https://mayconparanhos.github.io/
+ */
+
 const imagem = document.getElementById("imagem");
 const btn    = document.getElementById("btn");
 const img    = document.getElementById("img");
