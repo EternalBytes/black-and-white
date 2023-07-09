@@ -12,7 +12,7 @@ async function transform(){
     if(imagem.files[0].type === "image/jpeg" || imagem.files[0].type === "image/jpg"){
         const data = new FormData();
         data.append('imagem', imagem.files[0]);
-        //data.append('user', 'hubot')
+        
         await fetch('https://southamerica-east1-psyched-runner-391402.cloudfunctions.net/blackAndWhiteGo', {
             method: 'POST', 
             body: data

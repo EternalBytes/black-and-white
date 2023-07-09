@@ -354,3 +354,43 @@ body {
     0% {background-image: url("./gril-color.webp")}
     100% {background-image: url("./girl-bw.webp")}
 }
+
+.author {
+    position: absolute;
+    align-self: flex-end;
+    background-color: cadetblue;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 5px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(0px);
+    animation: float 4s ease-in-out infinite;
+} 
+
+.author .text {
+    color: white;
+    font-weight: 700;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.3);
+}
+
+.author .github, .github:active, .github:visited {
+    text-decoration: none;
+    color: white;
+    -webkit-text-stroke-color: rgba(255, 0, 0, 0.5);
+    -webkit-text-stroke-width: 1px;
+    font-weight: 700;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
